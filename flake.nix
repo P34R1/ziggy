@@ -21,7 +21,6 @@
       rec {
         packages.foreign = env.package {
           src = cleanSource ./.;
-          zigBuildZonLock = ./build.zig.zon2json-lock; # update with `nix run .#zon2lock`
 
           # Packages required for compiling
           nativeBuildInputs = with env.pkgs; [ ];
