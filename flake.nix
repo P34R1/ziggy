@@ -34,7 +34,7 @@
           zigDisableWrap = true;
         };
 
-        packages.default = self.packages.${system}.foreign.override (attrs: {
+        packages.default = packages.foreign.override (attrs: {
           # Prefer nix friendly settings.
           zigPreferMusl = false;
           zigDisableWrap = false;
