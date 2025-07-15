@@ -5,10 +5,10 @@
     "hash": "sha256-YiJ2lfG1xsGFMO6flk/BMhCqJ3kB3MnOX5fnfDEcmMY=",
     "rev": "aa24df42183ad415d10bc0a33e6238c437fc0f59"
   },
-  "lsp_kit-0.1.0-bi_PL8pACgARxlPI3USHMeiyGRuJJR7e8V0zOqjgkc4u": {
+  "lsp_kit-0.1.0-bi_PL5IyCgCh6ZNq1VaDklFqV0u23xNSXONjfDpYceJr": {
     "name": "lsp_kit",
-    "url": "git+https://github.com/zigtools/lsp-kit.git#2cdb2f697bbc8f54c0edc329c83cdfc36c0c602c",
-    "hash": "sha256-upmZi3yj7wCksupwpuaW7SZCQkp+gjAUglXDV5egSOQ=",
-    "rev": "2cdb2f697bbc8f54c0edc329c83cdfc36c0c602c"
+    "url": "git+https://github.com/zigtools/lsp-kit#e58d398b4058eea09d984d5d039eddd243e535ad",
+    "hash": "sha256-0q1l1zAUC/9/bSvj0ziheVMQmsTVUPPYR3RHS+FeEs0=",
+    "rev": "e58d398b4058eea09d984d5d039eddd243e535ad"
   }
 }

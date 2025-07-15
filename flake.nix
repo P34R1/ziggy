@@ -3,7 +3,7 @@
 
   inputs = {
     flake-utils.follows = "zig2nix/flake-utils";
-    zig2nix.url = "github:Cloudef/zig2nix";
+    zig2nix.url = "github:p34r1/zig2nix";
   };
 
   outputs =
@@ -15,7 +15,7 @@
     flake-utils.lib.eachDefaultSystem (
       system:
       let
-        env = zig2nix.outputs.zig-env.${system} { };
+        env = zig2nix.outputs.zig-env.${system} { zig = zig2nix.outputs.packages.${system}.zig-master; };
       in
       with env.pkgs.lib;
       rec {
