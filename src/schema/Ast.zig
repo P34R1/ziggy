@@ -5,6 +5,7 @@ const assert = std.debug.assert;
 const Diagnostic = @import("Diagnostic.zig");
 const Tokenizer = @import("Tokenizer.zig");
 const Token = Tokenizer.Token;
+const Writer = std.Io.Writer;
 
 pub const Node = struct {
     tag: Tag,
@@ -497,20 +498,12 @@ pub fn mustAny(
     }
 }
 
-pub fn format(
-    self: Ast,
-    comptime fmt: []const u8,
-    options: std.fmt.FormatOptions,
-    out_stream: anytype,
-) !void {
-    _ = fmt;
-    _ = options;
-
+pub fn format(self: Ast, out_stream: *Writer) !void {
     try render(self.nodes.items, self.code, out_stream);
 }
 
 const RenderMode = enum { horizontal, vertical };
-pub fn render(nodes: []const Node, code: [:0]const u8, w: anytype) !void {
+pub fn render(nodes: []const Node, code: [:0]const u8, w: *Writer) !void {
     // root expression
     const root_expr = nodes[1];
     try w.writeAll("root = ");
@@ -597,7 +590,7 @@ fn renderDocComment(
     indent: bool,
     nodes: []const Node,
     code: [:0]const u8,
-    w: anytype,
+    w: *Writer,
 ) !void {
     assert(idx != 0);
 
@@ -614,7 +607,7 @@ fn renderDocComment(
     }
 }
 
-fn renderExpr(idx: u32, nodes: []const Node, code: [:0]const u8, w: anytype) !void {
+fn renderExpr(idx: u32, nodes: []const Node, code: [:0]const u8, w: *Writer) !void {
     const expr = nodes[idx];
 
     switch (expr.tag) {
@@ -679,10 +672,10 @@ test "basics" {
         \\
     ;
 
-    var diag: Diagnostic = .{ .path = null };
-    errdefer std.debug.print("diag: {}", .{diag});
+    var diag: Diagnostic = .{ .lsp = false, .path = null };
+    errdefer std.debug.print("diag: {f}", .{diag});
     const ast = try Ast.init(std.testing.allocator, case, &diag);
     defer ast.deinit();
 
-    try std.testing.expectFmt(case, "{}", .{ast});
+    try std.testing.expectFmt(case, "{f}", .{ast});
 }
