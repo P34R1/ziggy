@@ -3,7 +3,7 @@
 
   inputs = {
     flake-utils.follows = "zig2nix/flake-utils";
-    zig2nix.url = "github:p34r1/zig2nix";
+    zig2nix.url = "github:silversquirl/zig2nix";
   };
 
   outputs =
@@ -22,10 +22,8 @@
         packages.foreign = env.package {
           src = cleanSource ./.;
 
-          # Packages required for compiling
-          nativeBuildInputs = with env.pkgs; [ ];
-          # Packages required for linking
-          buildInputs = with env.pkgs; [ ];
+          nativeBuildInputs = with env.pkgs; [ ]; # compiling
+          buildInputs = with env.pkgs; [ ]; # linking
 
           # Smaller binaries and avoids shipping glibc.
           zigPreferMusl = true;
@@ -39,13 +37,8 @@
           zigPreferMusl = false;
           zigDisableWrap = false;
 
-          # Executables required for runtime
-          # These packages will be added to the PATH
-          zigWrapperBins = with env.pkgs; [ ];
-
-          # Libraries required for runtime
-          # These packages will be added to the LD_LIBRARY_PATH
-          zigWrapperLibs = attrs.buildInputs or [ ];
+          zigWrapperBins = with env.pkgs; [ ]; # Executables for runtime
+          zigWrapperLibs = attrs.buildInputs or [ ]; # Libraries for runtime
         });
 
         # nix run .#zon2lock

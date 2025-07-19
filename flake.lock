@@ -63,15 +63,15 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1752606798,
-        "narHash": "sha256-w5TpxAGgI2b3zpgYD3F5kQTnq00YiD6zF8848nUbXyw=",
-        "owner": "p34r1",
+        "lastModified": 1752726660,
+        "narHash": "sha256-MIqFOBoTMXTQNrxrMtspON4V7PTQ/tNcM9PrlkLJ95Q=",
+        "owner": "silversquirl",
         "repo": "zig2nix",
-        "rev": "13c3c14d4dcecbfedf99112992569c0c4e716074",
+        "rev": "b5b1e990570b913a9baa6054630981ffa21192c9",
         "type": "github"
       },
       "original": {
-        "owner": "p34r1",
+        "owner": "silversquirl",
         "repo": "zig2nix",
         "type": "github"
       }
